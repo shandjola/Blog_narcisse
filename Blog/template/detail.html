@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogwebSite</title>
+     <!-- Box-icon-->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <div class="nav container">
+            <a href="#" class="logo"> Mon <span>Blog</span></a>
+            
+        </div>
+    </header>
+    
+     
+    <section class="services" id="services">
+        <div class="titre">
+            <h2 class="titre-texte">Nos <span>S</span>ervices</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Porro atque harum asperiores vero quibusdam ratione.
+            </p>
+        </div>
+        <div class="contenu">
+            <div class="box">
+                <div class="imbox">
+                    <img src="{% static 'images/a3.jpg' %}" alt="">
+                </div>
+                <div class="text">
+                    <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                </div>
+            </div>
+        </div>
+        <div class="titre">
+            <a href="{% url 'liste_articles' %}" class="btn1">retour</a>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="sec aboutus">
+                <h2>Réseaux sociaux</h2>
+                <ul class="sci">
+                    <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
+                    <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
+                    <li><a href="#"><i class="bx bxl-linkedin"></i></a></li>
+                    <li><a href="#"><i class="bx bxl-whatsapp"></i></a></li>
+                </ul>
+            </div>
+            <div class="sec quicklins">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="#">A propos</a></li>
+                </ul>
+            </div>
+            <div class="sec contactBx">
+                <h2>Contact Info</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="fa fa-envelope"></i></span>
+                        nkuanganarcisse3@gmail.com <br>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-phone"></i></span>
+                        +243 817992104
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'main.js'%}"></script>        
+</body>
+</html>

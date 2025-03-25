@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogwebSite</title>
+     <!-- Box-icon-->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <div class="nav container">
+            <a href="#" class="logo"> Mon <span>Blog</span></a>
+            <a href="{% url 'admin:index'%}" class="login">Se connecter</a>
+        </div>
+    </header>
+    
+    <section class="banniere" id="banniere">
+        <div class="contenu">
+            <h2> Narcisse blogger</h2>
+            <p>Votre source de bons contenus</p>
+
+        </div>
+    </section>
+        
+    <section class="about container" id="about">
+        <div class="contentBx">
+            <h2 class="titleText">Narcisse NKUANGA  <br> Biographie  <br> </h2>
+            <p class="title-text">
+                Né le 23 Aout, Narcisse NKUA NGA est actuellement apprenant au 3e cycle (DES/DEA) et Assistant à l’enseignement à la Faculté de Droit de l’Université de Kinshasa où il a décroché son diplôme de licence avec distinction au département de Droit Economique et Social. 
+Passionné par le Droit, ses domaines de recherche sont le droit du travail, le droit des sociétés, la propriété intellectuelle et d’autres disciplines semblables et proches
+Acteur social engagé et détenteur des plusieurs brevets dans plusieurs domaines notamment le leadership, il est initiateur et formateur principal au sein de ECOSHIP, une école de formation en leadership, art oratoire, entrepreneuriat mais aussi une école de la citoyenneté. 
+Avant cela, Narcisse a fait ses études primaires à l’EP 2 Mbanga, ses études secondaires à l’institut Kupika et ses humanités à l’institut Mbata-ntombo (Tshela/Kongo-Central où il a décroché son diplôme d’Etat en section littéraire option Latin-philosophie
+
+
+            </p>
+            <a href="{% url 'voire_plus' %}" class="btn2">Voir plus</a>
+        </div>
+
+        <div class="imgBx">
+           <img src="{% static 'images/a1.jpg' %}" alt=""class="fugit">
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Bouton pour afficher les catégories -->
+        <button id="category-btn">Afficher les Catégories</button>
+
+        <div id="category-filter" class="filter-container hidden">
+            <!-- <span class="filter-item" data-filter="all">Tous</span> -->
+            <span class="filter-item" data-filter="tech">Sciences</span>
+            <span class="filter-item" data-filter="food">Actualités</span>
+            <span class="filter-item" data-filter="news">Politique</span>
+            <span class="filter-item" data-filter="news">Droits</span>
+    </div>
+
+        <div class="post container">
+             <!--Le premier post-->
+        {% for article in articles %}
+            <div class="post-box tech">
+                {% if article.image %}
+                    <img class="imart" src="{{ article.image.url }}" alt="{{ article.titre}}" style="height:400px;">
+                {% endif %}
+                <h2 class="category">{{ article.cathegorie }}</h2>
+                <a href="#" class="post-title">{{ article.titre}}</a>
+                <span class="post-data">{{ article.date_publication }}</span>
+                <p class="post-description">{{ article.contenu }}</p>
+                <div class="profile">
+                    <img src="{% static 'images/a2.jpg' %}" alt="profile-img">
+                    <span class="profile-name">NKUANGA</span>
+                </div>
+            </div>
+        {% endfor %} 
+    </div>  
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="sec aboutus">
+                <h2>Réseaux sociaux</h2>
+                <ul class="sci">
+                    <li><a href="https://www.facebook.com/profile.php?id=100064077305487"><i class="bx bxl-facebook"></i></a></li>
+                    <li><a href="https://x.com/Narcissenkuanga?s=09"><i class="bx bxl-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/narcisse-nkuanga-9554551b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="bx bxl-linkedin"></i></a></li>
+                    <li><a href="#"><i class="bx bxl-whatsapp"></i></a></li>
+                </ul>
+            </div>
+            <div class="sec quicklins">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#">Acceuil</a></li>
+                    <li><a href="detail.html">A propos</a></li>
+                </ul>
+            </div>
+            <div class="sec contactBx">
+                <h2>Contact Info</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="fa fa-envelope"></i></span>
+                        nkuanganarcisse3@gmail.com <br>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-phone"></i></span>
+                        +243 817992104
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!--<div class="test" style="height: 100vh;"></div> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'main.js' %}"></script>
+
+    <script>
+        const categoryBtn = document.getElementById('category-btn');
+        const categoryFilter = document.getElementById('category-filter');
+        const filterItems = document.querySelectorAll('.filter-item');
+        const posts = document.querySelectorAll('.post-box');
+
+        categoryBtn.addEventListener('click', function() {
+            categoryFilter.classList.toggle('hidden');
+        });
+
+        filterItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                posts.forEach(post => {
+                    if (filter === 'all' || post.classList.contains(filter)) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+                categoryFilter.classList.add('hidden'); // Cacher les filtres après sélection
+            });
+        });
+    </script>
+
+</body>
+</html>
